@@ -106,7 +106,33 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-}
+  ingredientsArray = Object.entries(ingredients)
+
+  let stateValues = Object.values(state);
+
+  totalAmount = document.querySelector("aside > strong");
+  let sum = 0;
+
+   elems = document.querySelectorAll("aside > ul > li");
+   elems.forEach((elem, index) => {
+     if (stateValues[index] === true) {
+     elem.textContent = `${ingredientsArray[index][1].price}$`;
+     sum += ingredientsArray[index][1].price;
+     }
+     else {
+       elem.textContent = "0$";
+     }
+   })
+   totalAmount.textContent = `$ ${sum + basePrice}`;
+  
+
+
+
+  }
+
+
+
+
 
 renderEverything();
 
